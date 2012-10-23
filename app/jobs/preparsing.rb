@@ -57,7 +57,23 @@ class Preparsing
             system("mv #{Rails.root}/tmp/#{@genotype.fs_filename}.csv #{Rails.root}/public/data/#{@genotype.fs_filename}")
             log "copied file"
           end
-            
+
+        elsif @genotype.filetype == "get-evidence-gff"
+          # GET-Evidence GFF is the file type used by the Personal Genome Project.
+          log "get-evidence-gff"
+          puts "gff"
+          if entry.to_s.include?("gff")
+            log "get-evidence-gff: found genotyping-file"  
+            Zip::ZipFile.open(filename) {
+                |zipfile| 
+                zipfile.extract(entry,"#{Rails.root}/tmp/#{@genotype.fs_filename}.gff")
+                zipfile.close()
+                log "extracted file"
+            }
+            system("mv #{Rails.root}/tmp/#{@genotype.fs_filename}.gff #{Rails.root}/public/data/#{@genotype.fs_filename}")
+            log "copied file"
+          end
+
         end
       end
       
@@ -101,6 +117,12 @@ class Preparsing
         if l.split("\t").length == 10
             file_is_ok = true
             log "file is 23andme-exome and is ok!"
+        end
+    elsif @genotype.filetype == "get-evidence-gff"
+        # first line is of length 9; maybe need to verify
+        if l.split("\t").length == 9
+            file_is_ok = true
+            log "file is get-evidence-gff and is ok!"
         end
     end
 

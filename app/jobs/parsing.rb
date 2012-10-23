@@ -74,7 +74,58 @@ class Parsing
           snp = known_snps[snp_array[0].downcase]
           if snp.nil?
             next
-          end    
+          end   
+          
+        elsif @genotype.filetype == "get-evidence-gff"
+          # The GET-Evidence GFF format is used by the Personal Genome Project.
+          # Each line is tab-seperated.
+          temp_array = single_snp.split("\t")
+          # Sequence data contains many types; only proceed if it is a SNP:
+          if temp_array[2] != "SNP"
+            next
+          end
+          # Parse the last array element, which is semicolon-seperated.
+          @format_array = temp_array[-1].split(";")
+          @format_array.each_with_index do |element,index|
+            if element.scan("alleles") == ["alleles"]
+              # The alleles field is space-seperated
+              @genotype_non_parsed = element.split("\s")[1]
+              # Heterozygous alleles are reported with a slash,
+              # Homozygous alleles are listed only once. To make them similar:
+              if @genotype_non_parsed.length == 1
+                @genotype_parsed = @genotype_non_parsed + @genotype_non_parsed
+              elsif @genotype_non_parsed.length == 3
+                @genotype_parsed = @genotype_non_parsed.split("/")[0] + @genotype_non_parsed.split("/")[1]
+              else
+                # This case should only happen in error;
+                # perhaps throw an error handler?
+                # The following ensures a gentle failure mode
+                # via the known_snp check later.
+                @genotype_parsed = @genotype_non_parsed
+              end
+            end
+            # Check to see if there is a rs id by searching for db_xref;
+            # if not, return a dot (as happens in vcf data)
+            if element.scan("db_xref") == ["db_xref"]
+              # The field is colon-seperated, with rs id in the second half.
+              @snp_rsid = element.split(":")[1]
+            else
+              @snp_rsid = "."
+            end
+          end
+          # Read the zeroth element of temp_array, the chromosome number
+          # prefixed by "chr"
+          @chromosome_id = temp_array[0].scan(/\d+/)[0]
+          # Read the "starting" (same as "ending") position (assume hg37 build)
+          @snp_start_position = temp_array[3]
+
+          # Finally, assemble the SNP array
+          snp_array = [@snp_rsid.downcase,@chromosome_id,@snp_start_position,@genotype_parsed.upcase]
+          # Check against known SNPs 
+          snp = known_snps[snp_array[0].downcase]
+          if snp.nil?
+            next
+          end
         end
 
         if snp_array[0] != nil and snp_array[1] != nil and snp_array[2] != nil and snp_array[3] != nil
