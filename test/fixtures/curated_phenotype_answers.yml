@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  variation_name: MyText
+  curated_phenotype_id: 
+
+two:
+  variation_name: MyText
+  curated_phenotype_id: 

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  timeseries: false
+  answers: MyText
+  description: MyText
+
+two:
+  name: MyString
+  timeseries: false
+  answers: MyText
+  description: MyText
