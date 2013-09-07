@@ -79,6 +79,23 @@ ActiveRecord::Schema.define(:version => 20130907093212) do
   end
 
   create_table "file_links", :force => true do |t|
+>>>>>>> Basic types for curated phenotypes created
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "curated_user_phenotypes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "curated_phenotype_id"
+    t.integer  "curated_phenotype_answer_id"
+    t.datetime "time_of_data_point"
+    t.text     "comment"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "file_links", :force => true do |t|
     t.text     "description"
     t.text     "url"
     t.datetime "created_at"
