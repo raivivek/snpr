@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  belongs_to: 
+  belongs_to: 
+  belongs_to: 
+  time_of_data_point: 2013-09-07 19:32:12
+
+two:
+  belongs_to: 
+  belongs_to: 
+  belongs_to: 
+  time_of_data_point: 2013-09-07 19:32:12
