@@ -26,6 +26,7 @@
               Phenotypes<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li class=""><%= link_to("Phenotypes", :controller => "phenotypes", :action => "index")%></li>
+              <li class=""><%= link_to("Curated Phenotypes", :controller => "curated_phenotypes", :action => "index")%></li>
               <li class=""><%= link_to("Picture phenotypes", :controller => "picture_phenotypes", :action => "index")%></li>
               <li class=""><%= link_to("Fitbit connections", :controller => "fitbit_profiles", :action => "index")%></li>
             </ul>
@@ -114,7 +115,7 @@
       <% end %>
     </div>
 
-    <% if ["phenotypes", "picture_phenotypes", "fitbit_profiles"].include? params[:controller] %>
+    <% if ["phenotypes", "picture_phenotypes", "fitbit_profiles", "curated_phenotypes"].include? params[:controller] %>
     </div>
     <div class="container-fluid">
       <div class="row-fluid">
@@ -126,6 +127,8 @@
             <li><a href="/picture_phenotypes">Picture phenotypes</a></li>
             <li class="nav-header">APIs</li>
             <li><a href="/fitbit">Fitbit phenotypes</a></li>
+            <li class="nav-header">Given phenotypes</li>
+            <li><a href="/curated_phenotypes">Curated phenotypes</a></li>
           </ul>
 
         </div>
