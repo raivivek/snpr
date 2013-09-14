@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20130907093212) do
     t.string   "name"
     t.boolean  "timeseries"
     t.text     "description"
+    t.boolean  "is_series"
+    t.boolean  "is_multiple"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
