@@ -4,6 +4,8 @@ class CreateCuratedPhenotypes < ActiveRecord::Migration
       t.string :name
       t.boolean :timeseries
       t.text :description
+      t.boolean :is_series
+      t.boolean :is_multiple
 
       t.timestamps
     end
