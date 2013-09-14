@@ -16,6 +16,7 @@ Snpr::Application.routes.draw do
     end
   end
   resources :user_picture_phenotypes
+  resources :curated_phenotypes
   resources :genotypes
   resources :user_phenotypes
   resources :snps
