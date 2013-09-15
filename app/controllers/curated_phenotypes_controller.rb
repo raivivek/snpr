@@ -1,6 +1,14 @@
 class CuratedPhenotypesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
+  def new
+    # get all possible curated phenotypes, and get all possible answers for each
+    @curated_phenotypes = CuratedPhenotype.all
+  end
+
+  def create
+  end
+
   def show
     @curated_phenotype = CuratedPhenotype.find_by_id(params[:id]) || not_found
     @users = @curated_phenotype.users
