@@ -6,13 +6,14 @@
 <tr>
 	<th><%= sortable "name","Name"%></th>
 	<th><%= sortable "description","Description"%></th>
+    <th>Count of users</th>
 </tr>
 <% @curated_phenotypes_paginate.each do |cp| %>
 <tr>
     <td><%= link_to(cp.name, cp) %></td>
     <td><%= cp.description %></td>
+    <td><%= cp.users.length %></td>
 </tr>
 <% end %>
 </table>
 <%= page_navigation_links @curated_phenotypes_paginate %>
-

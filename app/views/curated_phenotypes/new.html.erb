@@ -1,5 +1,28 @@
 <legend>Create your phenotypes</legend>
-
-<%= form_tag do %>
-    form goes here
+<%= nested_form_for current_user, :remote => true, :html => { :class => "form-inline"  } do |f| %>
+    <% @curated_phenotypes.each do |cp| %>
+        <div class="well">
+        <u><h4><%= cp.name %></h4></u>
+        <% if cp.description  != ""%>
+            <p><i>Description:</i> <%= cp.description %></p>
+        <% end %>
+        <%# This is where radio buttons go %>
+        <% if not cp.is_multiple and not cp.is_series %>
+            <% cp.curated_phenotype_answers.each do |cu| %>
+                <div class="clearfix">
+                <%= radio_button_tag :curated_phenotype_answer, "variation_name", cu.id %>
+                <%= label_tag cu.variation_name %> 
+                </div>
+            <% end %>
+        <% end %>
+        <%# This is where checkboxes go %>
+        <% if cp.is_multiple %>
+        <% end %>
+        <%# This is where ranges go %>
+        <% if cp.is_series %>
+        <% end %>
+    <br/>
+    <%= f.submit "Submit your phenotypes", :class => "btn btn-primary" %>
+    </div>
+    <% end %>
 <% end %>
