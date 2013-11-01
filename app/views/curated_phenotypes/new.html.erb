@@ -1,5 +1,5 @@
 <legend>Create your phenotypes</legend>
-<%= form_for current_user, :html => { :class => "form-inline"  } do |f| %>
+<%= form_for current_user, :html => { :class => "form-inline", :user => current_user } do |f| %>
     <% @curated_phenotypes.each do |cp| %>
         <div class="well">
         <u><h4><%= cp.name %></h4></u>
@@ -17,9 +17,20 @@
         <% end %>
         <%# This is where checkboxes go %>
         <% if cp.is_multiple %>
+            <% cp.curated_phenotype_answers.each_with_index do |ca, index| %>
+                <%= f.label ca.variation_name, :class => "checkbox inline" %>
+                <!-- In params, there's now hash with the key of the curated phenotype's ID, which has another hash named "curated_phenotype_answer_ids", which has a list of ids of checked curated phenotype answers -->
+                <%= check_box cp.id, "curated_phenotype_answer_ids", {:multiple => true}, ca.id, nil %>
+                <% if index % 7 == 0 and index > 0 # line break every 7 elements %>
+                    <br/>
+                <% end %>
+            <% end %>
         <% end %>
         <%# This is where ranges go %>
         <% if cp.is_series %>
+            <% # cp.curated_phenotype_answers = [start, end, stepsize] %>
+            <% range = cp.curated_phenotype_answers[0].variation_name.to_i..cp.curated_phenotype_answers[1].variation_name.to_i %>
+            <%= select_tag(options_for_select(range.step(cp.curated_phenotype_answers[2].variation_name.to_i))) %>
         <% end %>
     <br/>
     <%= submit_tag "Submit your phenotypes", :class => "btn btn-primary" %>

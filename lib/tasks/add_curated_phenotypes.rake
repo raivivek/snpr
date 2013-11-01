@@ -60,7 +60,7 @@ namespace :curated_phenotypes do
     make_phenotype("Childhood IQ (WISC-IV)", "", false, ["0", "200", "1"], true, false)
     make_phenotype("Spearman's g (Raven's Progressive Matrices)", "", false, ["0", "36", "1"], true, false)
     make_phenotype("Dyslexia", "", false, ["No", "Yes"], false, false)
-    make_phenotype("Body height", "", false, ["0", "300", "1"], true, false)
+    make_phenotype("Body height", "Measured in cm.", false, ["0", "300", "1"], true, false)
     make_phenotype("Allergies", "", false, ["Fruit", "Cow milk", "Soy", "Eggs", "Wheat", "Peanuts", "Tree nuts (walnuts", "Fish", "Shellfish", "Meat", "Urushiol (poison ivy)", "Penicillin", "Aspirin", "Latex", "Tetracycline", "Dilantin", "Tegretol", "Cephalospirines", "Sulfonamides", "Anasthetics", "Non-steroidal anti-inflammatories", "Pollen", "Cat", "Dog", "Insect stings", "Mold", "Perfume", "Cosmetics", "Semen", "Water", "Dust mites", "Nickel", "Gold", "Chromium", "Cobalt chloride", "Formalaldehyde"], false, true)
   end
 
