@@ -1,6 +1,8 @@
 class CuratedPhenotypesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
+  before_filter :require_user, :only => [:new]
+
   def new
     # get all possible curated phenotypes, and get all possible answers for each
     @curated_phenotypes = CuratedPhenotype.all
