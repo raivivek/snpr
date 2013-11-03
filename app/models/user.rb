@@ -41,6 +41,7 @@ class User < ActiveRecord::Base
   has_many :picture_phenotype_comments
   has_one :fitbit_profile
   has_many :curated_phenotypes, through: :curated_user_phenotypes
+  has_many :curated_user_phenotypes
 
   # needed to edit several user_phenotypes at once, add and delete, and not empty
   accepts_nested_attributes_for :homepages, allow_destroy: true
