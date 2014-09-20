@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20140820071334) do
+=======
+ActiveRecord::Schema.define(:version => 20130907093212) do
+>>>>>>> 9601d3fda94105f3b81b3a00b484fdefec60e59a
 
   create_table "achievements", :force => true do |t|
     t.text     "award"
@@ -63,6 +67,27 @@ ActiveRecord::Schema.define(:version => 20140820071334) do
   create_table "curated_phenotypes", :force => true do |t|
     t.string   "name"
     t.boolean  "timeseries"
+<<<<<<< HEAD
+=======
+    t.text     "description"
+    t.boolean  "is_series"
+    t.boolean  "is_multiple"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "curated_user_phenotypes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "curated_phenotype_id"
+    t.integer  "curated_phenotype_answer_id"
+    t.datetime "time_of_data_point"
+    t.text     "comment"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "file_links", :force => true do |t|
+>>>>>>> 9601d3fda94105f3b81b3a00b484fdefec60e59a
     t.text     "description"
     t.boolean  "is_series"
     t.boolean  "is_multiple"
