@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130907093212) do
+ActiveRecord::Schema.define(:version => 20140820071334) do
 
   create_table "achievements", :force => true do |t|
     t.text     "award"
@@ -66,23 +66,6 @@ ActiveRecord::Schema.define(:version => 20130907093212) do
     t.text     "description"
     t.boolean  "is_series"
     t.boolean  "is_multiple"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "curated_user_phenotypes", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "curated_phenotype_id"
-    t.integer  "curated_phenotype_answer_id"
-    t.datetime "time_of_data_point"
-    t.text     "comment"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
-  end
-
-  create_table "file_links", :force => true do |t|
->>>>>>> Basic types for curated phenotypes created
-    t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
