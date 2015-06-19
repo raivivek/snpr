@@ -13,6 +13,12 @@ gem 'dynamic_form'
 gem 'lograge'
 gem 'slop'
 
+#jawbone
+gem 'omniauth'
+gem 'omniauth-jawbone'
+gem 'jawbone'
+
+
 # for errbit
 gem 'airbrake'
 
