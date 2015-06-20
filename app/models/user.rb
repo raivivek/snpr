@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar,
     content_type: ['image/jpeg', 'image/png', 'image/gif']
   # call on authlogic
-  acts_as_authentic do |c| 
+  acts_as_authentic do |c|
     # replace SHA512 by bcrypt
     c.transition_from_crypto_providers = Authlogic::CryptoProviders::Sha512
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
   has_many :phenotype_comments
   has_many :picture_phenotype_comments
   has_one :fitbit_profile
+  has_one :jawbone_profile
 
   # needed to edit several user_phenotypes at once, add and delete, and not empty
   accepts_nested_attributes_for :homepages, allow_destroy: true
