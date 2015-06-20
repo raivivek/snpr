@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
       @jawbone_profile.jawbone_user_id = request.env["omniauth.auth"]["uid"]
       @jawbone_profile.expires_at = Time.at(request.env["omniauth.auth"]["credentials"]["expires_at"]).to_datetime
       @jawbone_profile.save
+      Sidekiq::Client.enqueue(JawboneInit,@jawbone_profile.id)
       puts request.env["omniauth.auth"]
       render :text => request.env["omniauth.auth"].to_s and return
     end
