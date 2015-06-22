@@ -43,7 +43,8 @@ class JawboneInit
           break
         end
       end
-    rescue
+    rescue => e
+      logger.error("Failed with #{e.class}: #{e.message}")
     end
 
     begin
@@ -85,7 +86,8 @@ class JawboneInit
           end
         end
       end
-    rescue
+    rescue => e
+      logger.error("Failed with #{e.class}: #{e.message}")
     end
 
     begin
@@ -128,9 +130,26 @@ class JawboneInit
             puts "jawbone:saved more sleep"
           end
         end
-      rescue
+      rescue => e
+        logger.error("Failed with #{e.class}: #{e.message}")
       end
     end
     puts "jawbone:done all"
   end
+
+  def logger
+    return @logger if @logger
+    @logger = Logger.new(Rails.root.join("log/jawbone_#{Rails.env}.log"))
+    @logger.formatter = Logger::Formatter.new
+    @logger
+  end
+
+  def send_logged(method)
+    start_time = Time.now
+    ret = send(method)
+    took = Time.now - start_time
+    logger.info("calling of method `#{method}` took #{took} s")
+    ret
+  end
+
 end
