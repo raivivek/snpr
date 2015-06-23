@@ -144,12 +144,4 @@ class JawboneInit
     @logger
   end
 
-  def send_logged(method)
-    start_time = Time.now
-    ret = send(method)
-    took = Time.now - start_time
-    logger.info("calling of method `#{method}` took #{took} s")
-    ret
-  end
-
 end
