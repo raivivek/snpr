@@ -89,6 +89,7 @@ class JawboneInit
     rescue => e
       logger.error("Failed with #{e.class}: #{e.message}")
     end
+    # works until here
 
     begin
       # and one last time, now we go for sleep data
@@ -129,10 +130,12 @@ class JawboneInit
             @sleeps_entry.save
             puts "jawbone:saved more sleep"
           end
+        else
+          break
         end
-      rescue => e
-        logger.error("Failed with #{e.class}: #{e.message}")
       end
+    rescue => e
+      logger.error("Failed with #{e.class}: #{e.message}")
     end
     puts "jawbone:done all"
   end

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     @user = current_user
     puts request.env["omniauth.auth"]
-    if params[:provider] == "jawbone"
+    if params[:provider] == "jawbone" || params[:provider] == "jawbone_move"
       if @user.jawbone_profile == nil
         @user.jawbone_profile = JawboneProfile.new
         @user.jawbone_profile.save
