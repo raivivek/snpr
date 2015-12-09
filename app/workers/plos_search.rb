@@ -33,7 +33,7 @@ class PlosSearch
     }
     plos_paper = PlosPaper.find_or_initialize_by(doi: plos_paper_attributes[:doi])
     plos_paper.update_attributes!(plos_paper_attributes)
-    plos_paper.snps << snp
+    plos_paper.snps << snp unless plos_paper.snps.include? snp
     Sidekiq::Client.enqueue(PlosDetails, plos_paper.id)
   end
 
@@ -84,7 +84,6 @@ class PlosSearch
   end
 
   def self.api_key
-    # TODO: put in APP_CONFIG
-    File.read(Rails.root.join("key_plos.txt")).strip
+    ENV.fetch('PLOS_API_KEY')
   end
 end

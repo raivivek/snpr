@@ -23,7 +23,7 @@ Snpr::Application.configure do
   config.log_level = :info
 
   # Use a different logger for distributed setups
-  # config.logger = SyslogLogger.new
+  config.logger = Logger.new($stdout)
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
@@ -35,9 +35,10 @@ Snpr::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   config.action_mailer.delivery_method = :sendmail
-
-  # Disable delivery errors, bad email addresses will be ignored
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = {
+    from: 'no-reply@opensnp.org'
+  }
 
   # Enable threaded mode
   # config.threadsafe!
@@ -52,7 +53,7 @@ Snpr::Application.configure do
   # Compress JavaScript and CSS
   config.assets.compress = true
   config.assets.js_compressor = :uglifier
-  config.assets.css_compressor = :yui
+  #config.assets.css_compressor = :yui
 
   # Don't fallback to assets pipeline
   config.assets.compile = false

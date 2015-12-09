@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Snpr::Application.routes.draw do
   root :to => 'index#index' # change this, maybe
 
@@ -75,6 +77,10 @@ Snpr::Application.routes.draw do
   get '/user_picture_phenotypes/:id/delete', :to => 'user_picture_phenotypes#delete'
   get '/beacon/rest/responses', :to => 'beacon#responses'
 
+<<<<<<< HEAD
   get '/auth/:provider/callback', :to => 'sessions#create'
   get '/auth/failure', :to => 'sessions#failure'
+=======
+  mount Sidekiq::Web => '/sidekiq'
+>>>>>>> ae858e1d3f38dbb0aa306d2d592ec32b73d35659
 end

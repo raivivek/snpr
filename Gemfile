@@ -1,14 +1,15 @@
 source 'http://rubygems.org'
 
+gem 'dotenv-rails'
+
 gem 'rails', '~> 4.2.0'
 gem 'authlogic' # lots of user-related magic
 gem 'i18n', '>= 0.6.6'
 gem 'rails3-generators'
-gem "jquery-rails"
-gem 'vegas'
-gem 'bcrypt-ruby', :require => "bcrypt"
+gem 'jquery-rails'
+gem 'bcrypt-ruby', require: 'bcrypt'
 gem 'sanitize'
-gem "recaptcha", :require => "recaptcha/rails"
+gem 'recaptcha', require: 'recaptcha/rails'
 gem 'dynamic_form'
 gem 'lograge'
 gem 'slop'
@@ -39,19 +40,19 @@ gem 'pg_search'
 # so we can create zip-files for genotypes
 gem 'rubyzip'
 
-gem "will_paginate"
+gem 'will_paginate'
 gem 'nested_form', github: 'ryanb/nested_form'
 gem 'json'
 gem 'mediawiki-gateway'
 gem 'paperclip', '~> 4.0 '
 gem 'friendly_id'
-gem 'recommendify', github: 'paulasmuth/recommendify', :ref => "34308c4"
+gem 'recommendify', github: 'paulasmuth/recommendify', ref: '34308c4'
 
 # background jobs
 gem 'sidekiq'
 gem 'sidekiq-limit_fetch'
 gem 'slim', '~> 1.3.8'
-gem 'sinatra'
+gem 'sinatra', require: false
 
 # cron jobs
 gem 'whenever', require: false
@@ -60,10 +61,9 @@ gem 'whenever', require: false
 gem 'therubyracer'
 gem 'execjs'
 gem 'uglifier'
-gem 'yui-compressor'
-gem "twitter-bootstrap-rails"
-gem "jquery-ui-rails"
-gem "sass"
+gem 'twitter-bootstrap-rails'
+gem 'jquery-ui-rails'
+gem 'sass-rails'
 
 #group :production do
 #	gem 'rpm_contrib'

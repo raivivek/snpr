@@ -1,3 +1,8 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  RunRailsCops: true
+
 Style/DotPosition:
   EnforcedStyle: leading
 
@@ -7,8 +12,8 @@ Style/StringLiterals:
 Style/Documentation:
   Enabled: false
 
-Metrics/LineLength:
-  Max: 100
+#Metrics/LineLength:
+#  Max: 100
 
 Style/IfUnlessModifier:
   Enabled: false
@@ -16,12 +21,8 @@ Style/IfUnlessModifier:
 Style/TrailingComma:
   Enabled: false
 
-Metrics/MethodLength:
-  Max: 20
+#Metrics/MethodLength:
+#  Max: 20
 
-Metrics/AbcSize:
-  Max: 20
-
-Style/MultilineOperationIndentation:
-  EnforcedStyle: indented
-
+#Metrics/AbcSize:
+#  Max: 20
