@@ -7,7 +7,7 @@
     <b>Hi <%=@user.name%>,</b>
     <p>
 The new phenotype "<%=@phenotype.characteristic%>" was just entered on openSNP.
-<a href="<%=phenotype_url(@phenotype)%>"If you want to, you can enter your variation for this phenotype</a>
+<a href="<%=phenotype_url(@phenotype)%>">If you want to, you can enter your variation for this phenotype</a>
     </p>
     <p>
       Cheers,</br>
@@ -20,19 +20,7 @@ The new phenotype "<%=@phenotype.characteristic%>" was just entered on openSNP.
       along with <a href="patreon.com/openSNP">our Patreons</a> for supporting our
       hosting costs.</br>
       <a href="https://www.sbgenomics.com">
-        <%= image_tag("http://"+ActionMailer::Base.default_url_options[:host]+"/assets/SBG_logo.png") %>
+        <%= image_tag("SBG_logo.png") %>
       </a>
   </body>
 </html>
-
-
-
-Hello <%=@user.name%>,
-
-
-
-Cheers,
-your openSNP-team.
-
---
-You receive this email because you enabled the phenotype-notification-settings. To change your notification-settings you can visit <%=edit_user_url(@user)%>#notifications
