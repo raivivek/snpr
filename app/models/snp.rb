@@ -6,7 +6,9 @@ class Snp < ActiveRecord::Base
   has_many :pgp_annotations
   has_many :snp_references
   has_many :snp_comments
-  has_and_belongs_to_many :phenotypes
+
+  has_many :phenotype_snps
+  has_many :phenotypes, through: :phenotype_snps
 
   serialize :allele_frequency
   serialize :genotype_frequency

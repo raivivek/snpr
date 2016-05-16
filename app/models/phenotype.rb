@@ -6,6 +6,9 @@ class Phenotype < ActiveRecord::Base
   has_and_belongs_to_many :phenotype_sets
   has_and_belongs_to_many :snps
 
+  has_many :phenotype_snps
+  has_many :snps, through: :phenotype_snps
+
   validates_presence_of :characteristic
 
   pg_search_common_scope against: :characteristic
